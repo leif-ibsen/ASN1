@@ -33,14 +33,14 @@ public class ASN1BitString: ASN1, CustomStringConvertible {
     
     /// Description of *self*
     public override var description: String {
-        var sb = "Bit String (" + (self.bits.count * 8 - Int(self.unused)).description + "):"
+        var s = "Bit String (" + (self.bits.count * 8 - Int(self.unused)).description + "):"
         if self.bits.count > 0 {
             for i in 0 ..< self.bits.count - 1 {
-                sb.append(" " + byte2bin(self.bits[i]));
+                s += " " + byte2bin(self.bits[i])
             }
-            sb.append(" " + byte2bin(self.bits.last!).prefix(8 - Int(self.unused)))
+            s += " " + byte2bin(self.bits.last!).prefix(8 - Int(self.unused))
         }
-        return sb
+        return s
     }
     
     override func doEncode(_ bytes: inout Bytes) {

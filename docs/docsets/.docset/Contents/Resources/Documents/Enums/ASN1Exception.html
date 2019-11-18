@@ -132,9 +132,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:4ASN10A9ExceptionO7tooLongyACSi_tcACmF"></a>
-                    <a name="//apple_ref/swift/Element/tooLong(length:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4ASN10A9ExceptionO7tooLongyACSi_tcACmF">tooLong(length:)</a>
+                    <a name="/s:4ASN10A9ExceptionO7tooLongyACSi_SitcACmF"></a>
+                    <a name="//apple_ref/swift/Element/tooLong(position:length:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4ASN10A9ExceptionO7tooLongyACSi_SitcACmF">tooLong(position:length:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -142,16 +142,47 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Length is too big</p>
+                        <p>An ASN1 value is too long, max four length bytes are supported</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">tooLong</span><span class="p">(</span><span class="nv">length</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">tooLong</span><span class="p">(</span><span class="nv">position</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">length</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>position</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>position in input</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>length</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>number of length bytes</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -159,9 +190,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:4ASN10A9ExceptionO14unsupportedTagyACs5UInt8V_tcACmF"></a>
-                    <a name="//apple_ref/swift/Element/unsupportedTag(tag:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4ASN10A9ExceptionO14unsupportedTagyACs5UInt8V_tcACmF">unsupportedTag(tag:)</a>
+                    <a name="/s:4ASN10A9ExceptionO14unsupportedTagyACSi_s5UInt8VtcACmF"></a>
+                    <a name="//apple_ref/swift/Element/unsupportedTag(position:tag:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4ASN10A9ExceptionO14unsupportedTagyACSi_s5UInt8VtcACmF">unsupportedTag(position:tag:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -176,9 +207,40 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">unsupportedTag</span><span class="p">(</span><span class="nv">tag</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:4ASN14Bytea">Byte</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">unsupportedTag</span><span class="p">(</span><span class="nv">position</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">tag</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:4ASN14Bytea">Byte</a></span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>position</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>position in input</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tag</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>tag that is not supported</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -186,9 +248,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:4ASN10A9ExceptionO19unsupportedTagClassyACs5UInt8V_tcACmF"></a>
-                    <a name="//apple_ref/swift/Element/unsupportedTagClass(tagClass:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4ASN10A9ExceptionO19unsupportedTagClassyACs5UInt8V_tcACmF">unsupportedTagClass(tagClass:)</a>
+                    <a name="/s:4ASN10A9ExceptionO19unsupportedTagClassyACSi_s5UInt8VtcACmF"></a>
+                    <a name="//apple_ref/swift/Element/unsupportedTagClass(position:tagClass:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4ASN10A9ExceptionO19unsupportedTagClassyACSi_s5UInt8VtcACmF">unsupportedTagClass(position:tagClass:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -196,16 +258,151 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Unsupported tag class</p>
+                        <p>Application tag class (1) and private tag class (3) are not supported</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">unsupportedTagClass</span><span class="p">(</span><span class="nv">tagClass</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:4ASN14Bytea">Byte</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">unsupportedTagClass</span><span class="p">(</span><span class="nv">position</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">tagClass</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:4ASN14Bytea">Byte</a></span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>position</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>position in input</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tagClass</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>tag class that is not supported - 1 or 3</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4ASN10A9ExceptionO9tagTooBigyACSi_tcACmF"></a>
+                    <a name="//apple_ref/swift/Element/tagTooBig(position:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4ASN10A9ExceptionO9tagTooBigyACSi_tcACmF">tagTooBig(position:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Tag number must be less than 128</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">tagTooBig</span><span class="p">(</span><span class="nv">position</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>position</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>position in input</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4ASN10A9ExceptionO13inputTooShortyACSi_SitcACmF"></a>
+                    <a name="//apple_ref/swift/Element/inputTooShort(position:length:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4ASN10A9ExceptionO13inputTooShortyACSi_SitcACmF">inputTooShort(position:length:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Not enough input, eof encountered</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">inputTooShort</span><span class="p">(</span><span class="nv">position</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">length</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>position</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>position in input</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>length</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>number of bytes required</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -215,7 +412,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2019-10-31)</p>
+          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2019-11-18)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

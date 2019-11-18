@@ -9,11 +9,33 @@
 /// ASN1 exceptions
 public enum ASN1Exception: Error {
 
-    /// Length is too big
-    case tooLong(length: Int)
+    /// An ASN1 value is too long, max four length bytes are supported
+    /// - Parameters:
+    ///   - position: position in input
+    ///   - length: number of length bytes
+    case tooLong(position: Int, length: Int)
+    
     /// Unsupported tag
-    case unsupportedTag(tag: Byte)
-    /// Unsupported tag class
-    case unsupportedTagClass(tagClass: Byte)
+    /// - Parameters:
+    ///   - position: position in input
+    ///   - tag: tag that is not supported
+    case unsupportedTag(position: Int, tag: Byte)
+    
+    /// Application tag class (1) and private tag class (3) are not supported
+    /// - Parameters:
+    ///   - position: position in input
+    ///   - tagClass: tag class that is not supported - 1 or 3
+    case unsupportedTagClass(position: Int, tagClass: Byte)
+    
+    /// Tag number must be less than 128
+    /// - Parameters:
+    ///   - position: position in input
+    case tagTooBig(position: Int)
+
+    /// Not enough input, eof encountered
+    /// - Parameters:
+    ///   - position: position in input
+    ///   - length: number of bytes required
+    case inputTooShort(position: Int, length: Int)
 
 }

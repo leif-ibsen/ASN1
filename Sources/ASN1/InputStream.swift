@@ -10,33 +10,40 @@ import Foundation
 
 class InputStream {
     
-    private var stream: Data
-    private var offset: Int
+    var stream: Data
+    var position: Int
+    let size: Int
     
     init(_ stream: Data) {
         self.stream = stream
-        self.offset = 0
+        self.position = 0
+        self.size = stream.count
     }
     
-    func nextByte() -> Byte {
-        let b = self.stream[self.offset]
-        self.offset += 1
-        return b
+    func nextByte() throws -> Byte {
+        if self.position >= self.size {
+            throw ASN1Exception.inputTooShort(position: self.position, length: 1)
+        }
+        let byte = self.stream[self.position]
+        self.position += 1
+        return byte
     }
     
-    func nextBytes(_ bytes: inout Bytes) {
-        bytes = stream.withUnsafeBytes { (x: UnsafePointer<Byte>) in Array(UnsafeBufferPointer(start: x + self.offset, count: bytes.count)) }
-        self.offset += bytes.count
-    }
-    
-    func nextBytes(_ length: Int) -> Bytes {
-        var bytes = Bytes(repeating: 0, count: length)
-        nextBytes(&bytes)
+    func nextBytes(_ length: Int) throws -> Bytes {
+        if self.position + length > self.size {
+            throw ASN1Exception.inputTooShort(position: self.position, length: length)
+        }
+        let bytes = stream.withUnsafeBytes { (x: UnsafePointer<Byte>) in Array(UnsafeBufferPointer(start: x + self.position, count: length)) }
+        self.position += length
         return bytes
     }
     
-    func getOffset() -> Int {
-        return self.offset
+    func getPosition() -> Int {
+        return self.position
     }
-    
+
+    func push2Back() {
+        self.position -= 2
+    }
+
 }

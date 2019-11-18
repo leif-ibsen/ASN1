@@ -24,9 +24,12 @@ final class ASN1Tests: XCTestCase {
     }
     
     func testCtx() throws {
-        let a1 = ASN1Ctx(19, ASN1Boolean(true))
+        let a1 = ASN1Ctx(19, [ASN1Boolean(true)])
         let aa1 = try ASN1.build(a1.encode())
         XCTAssertTrue(aa1 == a1)
+        let b1 = ASN1Ctx(19, [1, 2, 3])
+        let bb1 = try ASN1.build(b1.encode())
+        XCTAssertTrue(bb1 == b1)
     }
     
     func testString() throws {
@@ -129,6 +132,26 @@ final class ASN1Tests: XCTestCase {
         XCTAssertTrue(asn1set1 == asn1set2)
     }
     
+    func testTag() throws {
+        let b1: Bytes = [2, 2, 3, 4] // Integer = 772
+        let b2: Bytes = [31, 2, 2, 3, 4] // Integer = 772
+        let x1 = try ASN1.build(b1)
+        let x2 = try ASN1.build(b2)
+        XCTAssertEqual(x1, x2)
+        let b3 = x2.encode()
+        XCTAssertEqual(b1, b3)
+    }
+
+    func testIndefinite() throws {
+        let b1: Bytes = [48, 8, 2, 2, 3, 4, 2, 2, 5, 6]
+        let b2: Bytes = [48, 128, 2, 2, 3, 4, 2, 2, 5, 6, 0, 0]
+        let x1 = try ASN1.build(b1)
+        let x2 = try ASN1.build(b2)
+        XCTAssertEqual(x1, x2)
+        let b3 = x2.encode()
+        XCTAssertEqual(b1, b3)
+    }
+
     static var allTests = [
         ("test1BitString", testBitString),
         ("testBoolean", testBoolean),
@@ -141,5 +164,7 @@ final class ASN1Tests: XCTestCase {
         ("testOctetString", testOctetString),
         ("testSequence", testSequence),
         ("testSet", testSet),
+        ("testTag", testTag),
+        ("testIndefinite", testIndefinite),
         ]
 }

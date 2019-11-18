@@ -114,7 +114,7 @@ public class ASN1: Equatable {
         case is ASN1Ctx.Type:
             let x1 = a1 as! ASN1Ctx
             let x2 = a2 as! ASN1Ctx
-            return x1.value == x2.value
+            return x1.value == x2.value && x1.bytes == x2.bytes
             
         case is ASN1Integer.Type:
             let x1 = a1 as! ASN1Integer
@@ -139,9 +139,36 @@ public class ASN1: Equatable {
         }
     }
 
+    /// Encode *self* as a byte array
+    ///
+    /// - Returns: ASN1 DER encoding of *self*
+    public func encode() -> Bytes {
+        var bytes = Bytes()
+        doEncode(&bytes)
+        return bytes
+    }
+
+    /// Build an ASN1 instance from a Data stream
+    ///
+    /// - Parameter stream: Data instance containing the ASN1 DER encoding
+    /// - Returns: An ASN1 instance
+    /// - Throws: An ASN1Exception if the input is invalid
+    public static func build(_ stream: Data) throws -> ASN1 {
+        return try doBuild(InputStream(stream))
+    }
+    
+    /// Build an ASN1 instance from a byte array
+    ///
+    /// - Parameter bytes: Byte array containing the ASN1 DER encoding
+    /// - Returns: An ASN1 instance
+    /// - Throws: An ASN1Exception if the input is invalid
+    public static func build(_ bytes: Bytes) throws -> ASN1 {
+        return try doBuild(InputStream(Data(bytes)))
+    }
+    
     func indent(_ data: inout String, _ level: Int) {
         for _ in 0 ..< level {
-            data.append("  ")
+            data += "  "
         }
     }
 
@@ -203,15 +230,6 @@ public class ASN1: Equatable {
         return getContentLength() + getLengthLength() + 1
     }
     
-    /// Encode *self* as a byte array
-    ///
-    /// - Returns: ASN1 DER encoding of *self*
-    public func encode() -> Bytes {
-        var bytes = Bytes()
-        doEncode(&bytes)
-        return bytes
-    }
-
     func byte2hex(_ b: Byte) -> String {
         return ASN1.hex[Int((b >> 4) & 0x0f)] + ASN1.hex[Int(b & 0x0f)]
     }
@@ -220,114 +238,154 @@ public class ASN1: Equatable {
         return ASN1.bin[Int((b >> 4) & 0x0f)] + ASN1.bin[Int(b & 0x0f)]
     }
 
-    /// Build an ASN1 instance from a Data stream
-    ///
-    /// - Parameter stream: Data instance containing the ASN1 DER encoding
-    /// - Returns: An ASN1 instance
-    /// - Throws: An ASN1Exception if the input is invalid
-    public static func build(_ stream: Data) throws -> ASN1 {
-        return try doBuild(InputStream(stream))
-    }
-    
-    /// Build an ASN1 instance from a byte array
-    ///
-    /// - Parameter bytes: Byte array containing the ASN1 DER encoding
-    /// - Returns: An ASN1 instance
-    /// - Throws: An ASN1Exception if the input is invalid
-    public static func build(_ bytes: Bytes) throws -> ASN1 {
-        return try doBuild(InputStream(Data(bytes)))
-    }
+    static let INDEFINITE = -1
     
     static func getLength(_ input: InputStream) throws -> Int {
         var length: Int
-        let l = input.nextByte()
-        if l > 127 {
-            let lb = l & 0x7f
-            if lb == 1 {
-                length = Int(input.nextByte())
-            } else if lb == 2 {
-                length = Int(input.nextByte()) << 8 | Int(input.nextByte())
-            } else {
-                throw ASN1Exception.tooLong(length: Int(lb))
-            }
+        let nb = try input.nextByte()
+        if nb < 128 {
+            length = Int(nb)
         } else {
-            length = Int(l)
+            let lb = nb & 0x7f
+            if lb == 0 {
+                length = INDEFINITE
+            } else if lb == 1 {
+                length = Int(try input.nextByte())
+            } else if lb == 2 {
+                length = Int(try input.nextByte())
+                length <<= 8
+                length |= Int(try input.nextByte())
+            } else if lb == 3 {
+                length = Int(try input.nextByte())
+                length <<= 8
+                length |= Int(try input.nextByte())
+                length <<= 8
+                length |= Int(try input.nextByte())
+            } else if lb == 4 {
+                length = Int(try input.nextByte())
+                length <<= 8
+                length |= Int(try input.nextByte())
+                length <<= 8
+                length |= Int(try input.nextByte())
+                length <<= 8
+                length |= Int(try input.nextByte())
+            } else {
+                throw ASN1Exception.tooLong(position: input.getPosition(), length: Int(lb))
+            }
         }
         return length
     }
+    
+    static func getTag(_ nb: Byte, _ input: InputStream) throws -> Byte {
+        var tag = nb & 0x1f
+        if tag == 0x1f {
+            tag = try input.nextByte()
+            if tag > 127 {
+                throw ASN1Exception.tagTooBig(position: input.getPosition())
+            }
+        }
+        return tag
+    }
+
+    static func indefiniteLength(_ input: InputStream) throws -> [ASN1] {
+        var list = [ASN1]()
+        while true {
+            let b0 = try input.nextByte()
+            let b1 = try input.nextByte()
+            if b0 == 0 && b1 == 0 {
+                break
+            }
+            input.push2Back()
+            try list.append(doBuild(input))
+        }
+        return list
+    }
 
     static func doBuild(_ input: InputStream) throws -> ASN1 {
-        let nb = input.nextByte()
-        let tag = nb & 0x1f
+        let nb = try input.nextByte()
         let tagClass = (nb >> 6) & 0x3
+        let constructed = nb & 0x20 != 0
+        let tag = try getTag(nb, input)
         let length = try getLength(input)
         if tagClass == 2 {
-            return ASN1Ctx(tag, try ASN1.build(input.nextBytes(length)))
+            if length == INDEFINITE {
+                return try ASN1Ctx(tag, indefiniteLength(input))
+            } else {
+                return try constructed ? ASN1Ctx(tag, [ASN1.build(input.nextBytes(length))]) : ASN1Ctx(tag, input.nextBytes(length))
+            }
         } else if tagClass == 0 {
             switch tag {
             case TAG_Boolean:
-                return ASN1Boolean(input.nextByte() != 0)
+                return ASN1Boolean(try input.nextByte() != 0)
                 
             case TAG_UTCTime:
-                return ASN1UTCTime(input.nextBytes(length))
+                return ASN1UTCTime(try input.nextBytes(length))
                 
             case TAG_GeneralizedTime:
-                return ASN1GeneralizedTime(input.nextBytes(length))
+                return ASN1GeneralizedTime(try input.nextBytes(length))
                 
             case TAG_IA5String:
-                return ASN1IA5String(input.nextBytes(length))
+                return ASN1IA5String(try input.nextBytes(length))
                 
             case TAG_PrintableString:
-                return ASN1PrintableString(input.nextBytes(length))
+                return ASN1PrintableString(try input.nextBytes(length))
                 
             case TAG_T61String:
-                return ASN1T61String(input.nextBytes(length))
+                return ASN1T61String(try input.nextBytes(length))
                 
             case TAG_BMPString:
-                return ASN1BMPString(input.nextBytes(length))
+                return ASN1BMPString(try input.nextBytes(length))
                 
             case TAG_UTF8String:
-                return ASN1UTF8String(input.nextBytes(length))
+                return ASN1UTF8String(try input.nextBytes(length))
                 
             case TAG_Integer:
-                return ASN1Integer(input.nextBytes(length))
+                return ASN1Integer(try input.nextBytes(length))
                 
             case TAG_OctetString:
-                return ASN1OctetString(input.nextBytes(length))
+                return ASN1OctetString(try input.nextBytes(length))
                 
             case TAG_Sequence:
-                let here = input.getOffset()
-                var list = [ASN1]()
-                while input.getOffset() < here + length {
-                    let asn1 = try doBuild(input)
-                    list.append(asn1)
+                var list: [ASN1]
+                if length == INDEFINITE {
+                    list = try indefiniteLength(input)
+                } else {
+                    list = [ASN1]()
+                    let here = input.getPosition()
+                    while input.getPosition() < here + length {
+                        try list.append(doBuild(input))
+                    }
                 }
                 return ASN1Sequence(list)
                 
             case TAG_Set:
-                let here = input.getOffset()
-                var list = [ASN1]()
-                while input.getOffset() < here + length {
-                    let asn1 = try doBuild(input)
-                    list.append(asn1)
+                var list: [ASN1]
+                if length == INDEFINITE {
+                    list = try indefiniteLength(input)
+                } else {
+                    list = [ASN1]()
+                    let here = input.getPosition()
+                    while input.getPosition() < here + length {
+                        try list.append(doBuild(input))
+                    }
                 }
                 return ASN1Set(list)
                 
             case TAG_ObjectIdentifier:
-                return ASN1ObjectIdentifier(input.nextBytes(length))
+                return ASN1ObjectIdentifier(try input.nextBytes(length))
                 
             case TAG_BitString:
-                let unused = input.nextByte()
-                return ASN1BitString(input.nextBytes(length - 1), unused)
+                let unused = try input.nextByte()
+                return ASN1BitString(try input.nextBytes(length - 1), unused)
                 
             case TAG_Null:
                 return ASN1.NULL
                 
             default:
-                throw ASN1Exception.unsupportedTag(tag: tag)
+                throw ASN1Exception.unsupportedTag(position: input.getPosition(), tag: tag)
             }
         } else {
-            throw ASN1Exception.unsupportedTagClass(tagClass: tagClass)
+            throw ASN1Exception.unsupportedTagClass(position: input.getPosition(), tagClass: tagClass)
         }
     }
 

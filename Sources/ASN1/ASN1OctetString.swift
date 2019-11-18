@@ -22,12 +22,11 @@ public class ASN1OctetString: ASN1SimpleType, CustomStringConvertible {
     
     /// Description of *self*
     public override var description: String {
-        var sb = ""
-        sb.append("Octet String (" + value.count.description + "):")
-        for i in 0 ..< value.count {
-            sb.append(" " + byte2hex(value[i]))
+        var s = "Octet String (" + self.value.count.description + "):"
+        for i in 0 ..< self.value.count {
+            s += " " + byte2hex(self.value[i])
         }
-        return sb
+        return s
     }
 
 }
