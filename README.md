@@ -107,7 +107,7 @@ ASN1 requires Swift 5.0.
 The ASN1 package depends on the BigInt package
 
     dependencies: [
-        .package(url: "https://github.com/leif-ibsen/BigInt", from: "1.0.0"),
+        .package(url: "https://github.com/leif-ibsen/BigInt", from: "1.0.1"),
     ],
 
 <h3><b>References</b></h3>

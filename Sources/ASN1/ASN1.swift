@@ -163,7 +163,7 @@ public class ASN1: Equatable {
     /// - Returns: An ASN1 instance
     /// - Throws: An ASN1Exception if the input is invalid
     public static func build(_ bytes: Bytes) throws -> ASN1 {
-        return try doBuild(InputStream(Data(bytes)))
+        return try doBuild(InputStream(bytes))
     }
     
     func indent(_ data: inout String, _ level: Int) {

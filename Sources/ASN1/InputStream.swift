@@ -20,6 +20,10 @@ class InputStream {
         self.size = stream.count
     }
     
+    convenience init(_ stream: Bytes) {
+        self.init(Data(stream))
+    }
+
     func nextByte() throws -> Byte {
         if self.position >= self.size {
             throw ASN1Exception.inputTooShort(position: self.position, length: 1)
@@ -33,7 +37,7 @@ class InputStream {
         if self.position + length > self.size {
             throw ASN1Exception.inputTooShort(position: self.position, length: length)
         }
-        let bytes = stream.withUnsafeBytes { (x: UnsafePointer<Byte>) in Array(UnsafeBufferPointer(start: x + self.position, count: length)) }
+        let bytes = Bytes(self.stream[self.position ..< self.position + length])
         self.position += length
         return bytes
     }
