@@ -46,6 +46,13 @@ public class ASN1Collection: ASN1 {
         return self
     }
     
+    /// Remove a collection value
+    ///
+    /// - Parameter i: Index of value
+    public func remove(at i: Int) {
+         self.value.remove(at: i)
+    }
+    
     /// Get a collection value
     ///
     /// - Parameter i: Index of value

@@ -107,6 +107,8 @@ final class ASN1Tests: XCTestCase {
         a1.add(ASN1.ONE)
         a1.add(ASN1ObjectIdentifier("1.2.3"))
         a1.add(ASN1UTCTime(date))
+        a1.add(ASN1UTCTime(date))
+        a1.remove(at: 4)
         let a2 = ASN1Sequence()
         a2.add(ASN1IA5String("IA5String"))
         a2.add(ASN1.ONE)
