@@ -46,14 +46,23 @@ public class ASN1Collection: ASN1 {
         return self
     }
     
-    /// Get a collection value
+    /// Get a value from a collection
     ///
-    /// - Parameter i: Index of value
+    /// - Parameter i: Index of value to get
     /// - Returns: Value at index
     public func get(_ i: Int) -> ASN1 {
         return self.value[i]
     }
     
+    /// Remove a value from a collection - a set or a sequence.
+    /// Note that a set is sorted by its element's tags,
+    /// so a set element's index may not match the order in which it was inserted
+    ///
+    /// - Parameter i: Index of value to remove
+    public func remove(_ i: Int) {
+        self.value.remove(at: i)
+    }
+
     override func doEncode(_ bytes: inout Bytes) {
         bytes.append(self.tag | 0x20)
         makeLength(getContentLength(), &bytes)

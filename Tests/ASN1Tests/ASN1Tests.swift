@@ -132,6 +132,32 @@ final class ASN1Tests: XCTestCase {
         XCTAssertTrue(asn1set1 == asn1set2)
     }
     
+    func testRemoveSequence() {
+        let a1 = ASN1Sequence()
+        a1.add(ASN1IA5String("IA5String"))
+        a1.add(ASN1.ONE)
+        a1.add(ASN1ObjectIdentifier("1.2.3"))
+        let a2 = ASN1Sequence()
+        a2.add(ASN1.ONE)
+        a2.add(ASN1ObjectIdentifier("1.2.3"))
+        XCTAssertTrue(a1 != a2)
+        a1.remove(0)
+        XCTAssertTrue(a1 == a2)
+    }
+    
+    func testRemoveSet() {
+        let a1 = ASN1Set()
+        a1.add(ASN1IA5String("IA5String"))
+        a1.add(ASN1.ONE)
+        a1.add(ASN1ObjectIdentifier("1.2.3"))
+        let a2 = ASN1Set()
+        a2.add(ASN1.ONE)
+        a2.add(ASN1ObjectIdentifier("1.2.3"))
+        XCTAssertTrue(a1 != a2)
+        a1.remove(2)
+        XCTAssertTrue(a1 == a2)
+    }
+
     func testTag() throws {
         let b1: Bytes = [2, 2, 3, 4] // Integer = 772
         let b2: Bytes = [31, 2, 2, 3, 4] // Integer = 772
