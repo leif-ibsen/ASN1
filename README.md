@@ -32,6 +32,13 @@ It supports the following ASN1 types:
 <li>UTF8String</li>
 </ul>
 
+<h3><b>Usage</b></h3>
+In your project Package.swift file add a dependency like<br/>
+
+	  dependencies: [
+	  .package(url: "https://github.com/leif-ibsen/ASN1", from: "1.2.1"),
+	  ]
+
 <h3><b>Example 1</b></h3>
 
 Example 1 shows how to decode a byte array containing an ASN1 structure.
@@ -107,7 +114,7 @@ ASN1 requires Swift 5.0.
 The ASN1 package depends on the BigInt package
 
     dependencies: [
-        .package(url: "https://github.com/leif-ibsen/BigInt", from: "1.1.0"),
+        .package(url: "https://github.com/leif-ibsen/BigInt", from: "1.1.2"),
     ],
 
 <h3><b>References</b></h3>
