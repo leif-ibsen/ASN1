@@ -8,6 +8,9 @@
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
     
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
     <a name="//apple_ref/swift/Class/ASN1Integer" class="dashAnchor"></a>
@@ -15,6 +18,11 @@
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html"> Docs</a> (100% documented)</p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -119,6 +127,7 @@
             <h1>ASN1Integer</h1>
               <div class="declaration">
                 <div class="language">
+                  
                   <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ASN1Integer</span> <span class="p">:</span> <span class="kt"><a href="../Classes/ASN1.html">ASN1</a></span><span class="p">,</span> <span class="kt">CustomStringConvertible</span></code></pre>
 
                 </div>
@@ -131,17 +140,19 @@
               <div class="task-name-container">
                 <a name="/Initializers"></a>
                 <a name="//apple_ref/swift/Section/Initializers" class="dashAnchor"></a>
-                <a href="#/Initializers">
-                  <h3 class="section-name">Initializers</h3>
-                </a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Initializers"></a>
+                  <h3 class="section-name"><p>Initializers</p>
+</h3>
+                </div>
               </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:4ASN10A7IntegerCyACSays5UInt8VGcfc"></a>
+                    <a name="/s:4ASN10A7IntegerCyACSays5UInt8VGKcfc"></a>
                     <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4ASN10A7IntegerCyACSays5UInt8VGcfc">init(_:)</a>
+                    <a class="token" href="#/s:4ASN10A7IntegerCyACSays5UInt8VGKcfc">init(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -150,13 +161,18 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Constructs an ASN1Integer instance from a big-endian 2&rsquo;s complement byte array</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    An ASN1Exception if <em>bytes</em> is empty
+
+</div>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">bytes</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:4ASN15Bytesa">Bytes</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">bytes</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:4ASN15Bytesa">Bytes</a></span><span class="p">)</span> <span class="k">throws</span></code></pre>
 
                         </div>
                       </div>
@@ -187,7 +203,7 @@
                     <code>
                     <a name="/s:4ASN10A7IntegerCyAC6BigInt4BIntVcfc"></a>
                     <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4ASN10A7IntegerCyAC6BigInt4BIntVcfc">init(_:)</a>
+                    <a class="token" href="#/s:4ASN10A7IntegerCyAC6BigInt4BIntVcfc">init(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -234,9 +250,11 @@
               <div class="task-name-container">
                 <a name="/Stored%20properties"></a>
                 <a name="//apple_ref/swift/Section/Stored properties" class="dashAnchor"></a>
-                <a href="#/Stored%20properties">
-                  <h3 class="section-name">Stored properties</h3>
-                </a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Stored%20properties"></a>
+                  <h3 class="section-name"><p>Stored properties</p>
+</h3>
+                </div>
               </div>
               <ul>
                 <li class="item">
@@ -272,9 +290,11 @@
               <div class="task-name-container">
                 <a name="/Computed%20properties"></a>
                 <a name="//apple_ref/swift/Section/Computed properties" class="dashAnchor"></a>
-                <a href="#/Computed%20properties">
-                  <h3 class="section-name">Computed properties</h3>
-                </a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Computed%20properties"></a>
+                  <h3 class="section-name"><p>Computed properties</p>
+</h3>
+                </div>
               </div>
               <ul>
                 <li class="item">
@@ -309,8 +329,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2020-02-24)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2021 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2021-08-03)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

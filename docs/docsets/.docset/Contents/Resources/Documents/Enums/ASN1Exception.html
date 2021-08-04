@@ -8,6 +8,9 @@
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
     
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
     <a name="//apple_ref/swift/Enum/ASN1Exception" class="dashAnchor"></a>
@@ -15,6 +18,11 @@
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html"> Docs</a> (100% documented)</p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -119,6 +127,7 @@
             <h1>ASN1Exception</h1>
               <div class="declaration">
                 <div class="language">
+                  
                   <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ASN1Exception</span> <span class="p">:</span> <span class="kt">Error</span></code></pre>
 
                 </div>
@@ -134,7 +143,7 @@
                     <code>
                     <a name="/s:4ASN10A9ExceptionO7tooLongyACSi_SitcACmF"></a>
                     <a name="//apple_ref/swift/Element/tooLong(position:length:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4ASN10A9ExceptionO7tooLongyACSi_SitcACmF">tooLong(position:length:)</a>
+                    <a class="token" href="#/s:4ASN10A9ExceptionO7tooLongyACSi_SitcACmF">tooLong(position:<wbr>length:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -192,7 +201,7 @@
                     <code>
                     <a name="/s:4ASN10A9ExceptionO14unsupportedTagyACSi_s5UInt8VtcACmF"></a>
                     <a name="//apple_ref/swift/Element/unsupportedTag(position:tag:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4ASN10A9ExceptionO14unsupportedTagyACSi_s5UInt8VtcACmF">unsupportedTag(position:tag:)</a>
+                    <a class="token" href="#/s:4ASN10A9ExceptionO14unsupportedTagyACSi_s5UInt8VtcACmF">unsupportedTag(position:<wbr>tag:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -250,7 +259,7 @@
                     <code>
                     <a name="/s:4ASN10A9ExceptionO19unsupportedTagClassyACSi_s5UInt8VtcACmF"></a>
                     <a name="//apple_ref/swift/Element/unsupportedTagClass(position:tagClass:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4ASN10A9ExceptionO19unsupportedTagClassyACSi_s5UInt8VtcACmF">unsupportedTagClass(position:tagClass:)</a>
+                    <a class="token" href="#/s:4ASN10A9ExceptionO19unsupportedTagClassyACSi_s5UInt8VtcACmF">unsupportedTagClass(position:<wbr>tagClass:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -308,7 +317,7 @@
                     <code>
                     <a name="/s:4ASN10A9ExceptionO9tagTooBigyACSi_tcACmF"></a>
                     <a name="//apple_ref/swift/Element/tagTooBig(position:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4ASN10A9ExceptionO9tagTooBigyACSi_tcACmF">tagTooBig(position:)</a>
+                    <a class="token" href="#/s:4ASN10A9ExceptionO9tagTooBigyACSi_tcACmF">tagTooBig(position:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -354,7 +363,7 @@
                     <code>
                     <a name="/s:4ASN10A9ExceptionO13inputTooShortyACSi_SitcACmF"></a>
                     <a name="//apple_ref/swift/Element/inputTooShort(position:length:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4ASN10A9ExceptionO13inputTooShortyACSi_SitcACmF">inputTooShort(position:length:)</a>
+                    <a class="token" href="#/s:4ASN10A9ExceptionO13inputTooShortyACSi_SitcACmF">inputTooShort(position:<wbr>length:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -407,13 +416,105 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4ASN10A9ExceptionO16indefiniteLengthyACSi_tcACmF"></a>
+                    <a name="//apple_ref/swift/Element/indefiniteLength(position:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4ASN10A9ExceptionO16indefiniteLengthyACSi_tcACmF">indefiniteLength(position:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Indefinite length only supported for sets and sequences</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">indefiniteLength</span><span class="p">(</span><span class="nv">position</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>position</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>position in input</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4ASN10A9ExceptionO9wrongDatayACSi_tcACmF"></a>
+                    <a name="//apple_ref/swift/Element/wrongData(position:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4ASN10A9ExceptionO9wrongDatayACSi_tcACmF">wrongData(position:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Wrong input data</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">wrongData</span><span class="p">(</span><span class="nv">position</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>position</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>position in input</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2020-02-24)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2021 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2021-08-03)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

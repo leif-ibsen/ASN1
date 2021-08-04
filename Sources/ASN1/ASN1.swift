@@ -179,12 +179,11 @@ public class ASN1: Equatable {
     }
 
     func doEncode(_ bytes: inout Bytes) {
-        precondition(false, "ASN1.doEncode called")
+        fatalError("ASN1.doEncode called")
     }
     
     func getContentLength() -> Int {
-        precondition(false, "ASN1.getContentLength called")
-        return 0
+        fatalError("ASN1.getContentLength called")
     }
 
     func makeLength(_ length: Int, _ bytes: inout Bytes) {
@@ -314,10 +313,16 @@ public class ASN1: Equatable {
                 return try constructed ? ASN1Ctx(tag, [ASN1.build(input.nextBytes(length))]) : ASN1Ctx(tag, input.nextBytes(length))
             }
         } else if tagClass == 0 {
+            if length == INDEFINITE && tag != TAG_Sequence && tag != TAG_Set {
+                throw ASN1Exception.indefiniteLength(position: input.getPosition())
+            }
             switch tag {
             case TAG_Boolean:
+                if length != 1 {
+                    throw ASN1Exception.wrongData(position: input.getPosition())
+                }
                 return ASN1Boolean(try input.nextByte() != 0)
-                
+
             case TAG_UTCTime:
                 return ASN1UTCTime(try input.nextBytes(length))
                 
@@ -340,7 +345,11 @@ public class ASN1: Equatable {
                 return ASN1UTF8String(try input.nextBytes(length))
                 
             case TAG_Integer:
-                return ASN1Integer(try input.nextBytes(length))
+                do {
+                    return try ASN1Integer(try input.nextBytes(length))
+                } catch ASN1Exception.wrongData(_) {
+                    throw ASN1Exception.wrongData(position: input.getPosition())
+                }
                 
             case TAG_OctetString:
                 return ASN1OctetString(try input.nextBytes(length))
@@ -372,15 +381,24 @@ public class ASN1: Equatable {
                 return ASN1Set(list)
                 
             case TAG_ObjectIdentifier:
-                return ASN1ObjectIdentifier(try input.nextBytes(length))
+                guard let oid = ASN1ObjectIdentifier(try input.nextBytes(length)) else {
+                    throw ASN1Exception.wrongData(position: input.getPosition())
+                }
+                return oid
                 
             case TAG_BitString:
+                if length == 0 {
+                    throw ASN1Exception.wrongData(position: input.getPosition())
+                }
                 let unused = try input.nextByte()
-                return ASN1BitString(try input.nextBytes(length - 1), unused)
+                return try ASN1BitString(input.nextBytes(length - 1), unused)
                 
             case TAG_Null:
+                if length != 0 {
+                    throw ASN1Exception.wrongData(position: input.getPosition())
+                }
                 return ASN1.NULL
-                
+
             default:
                 throw ASN1Exception.unsupportedTag(position: input.getPosition(), tag: tag)
             }

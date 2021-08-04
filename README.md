@@ -8,7 +8,8 @@ ASN1 supports:
 <li>Building ASN1 structures from their byte array representation</li>
 <li>DER encoding of ASN1 structures</li>
 <li>Displaying ASN1 structures</li>
-<li>Definite length and indefinite length encoding</li>
+<li>Definite length encoding and decoding</li>
+<li>Indefinite length decoding of sets and sequences</li>
 <li>Tag numbers less than 128</li>
 <li>Universal (0) and context-specific (2) tag classes</li>
 </ul>
@@ -36,7 +37,7 @@ It supports the following ASN1 types:
 In your project Package.swift file add a dependency like<br/>
 
 	  dependencies: [
-	  .package(url: "https://github.com/leif-ibsen/ASN1", from: "1.2.1"),
+	  .package(url: "https://github.com/leif-ibsen/ASN1", from: "2.0.0"),
 	  ]
 
 <h3><b>Example 1</b></h3>
@@ -114,7 +115,7 @@ ASN1 requires Swift 5.0.
 The ASN1 package depends on the BigInt package
 
     dependencies: [
-        .package(url: "https://github.com/leif-ibsen/BigInt", from: "1.1.2"),
+        .package(url: "https://github.com/leif-ibsen/BigInt", from: "1.2.5"),
     ],
 
 <h3><b>References</b></h3>
@@ -122,4 +123,5 @@ The ASN1 package depends on the BigInt package
 <ul>
 <li>Burton S. Kaliski Jr.: A Layman's Guide to a Subset of ASN.1, BER, and DER, 1993</li>
 <li>John Larmouth: ASN.1 Complete, Open Systems Solutions 1999</li>
+<li>ITU-T Recommendation X.690</li>
 </ul>

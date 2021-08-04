@@ -38,4 +38,14 @@ public enum ASN1Exception: Error {
     ///   - length: number of bytes required
     case inputTooShort(position: Int, length: Int)
 
+    /// Indefinite length only supported for sets and sequences
+    /// - Parameters:
+    ///   - position: position in input
+    case indefiniteLength(position: Int)
+
+    /// Wrong input data
+    /// - Parameters:
+    ///   - position: position in input
+    case wrongData(position: Int)
+
 }

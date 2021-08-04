@@ -16,7 +16,11 @@ public class ASN1BitString: ASN1, CustomStringConvertible {
     /// - Parameters:
     ///   - bits: Byte array containing the bits
     ///   - unused: Number of unused bits
-    public init(_ bits: Bytes, _ unused: Byte) {
+    /// - Throws: An ASN1Exception if *unused* has an illegal value
+    public init(_ bits: Bytes, _ unused: Byte) throws {
+        guard (bits.count > 0 && unused < 8) || (bits.count == 0 && unused == 0) else {
+            throw ASN1Exception.wrongData(position: 0)
+        }
         self.bits = bits
         self.unused = unused
         super.init(ASN1.TAG_BitString)

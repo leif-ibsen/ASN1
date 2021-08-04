@@ -1,16 +1,16 @@
 import XCTest
-@testable import ASN1
-@testable import BigInt
+//@testable import ASN1
+import BigInt
 
 final class ASN1Tests: XCTestCase {
     
     func testBitString() throws {
-        let a = ASN1BitString([1, 2, 3], 3)
+        let a = try ASN1BitString([1, 2, 3], 3)
         let aa = try ASN1.build(a.encode())
         XCTAssertTrue(aa == a)
-        let b = ASN1BitString([], 0)
+        let b = try ASN1BitString([], 0)
         XCTAssertTrue(b.description == "Bit String (0):")
-        let bb = ASN1BitString([128], 7)
+        let bb = try ASN1BitString([128], 7)
         XCTAssertTrue(bb.description == "Bit String (1): 1")
     }
 
@@ -64,8 +64,8 @@ final class ASN1Tests: XCTestCase {
     func testInteger() throws {
         let a = ASN1Integer(BInt.ZERO)
         let b = ASN1Integer(BInt("-1234567890123456789012345678901234567890")!)
-        let c = ASN1Integer([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
-        let d = ASN1Integer([128, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
+        let c = try ASN1Integer([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
+        let d = try ASN1Integer([128, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
         let aa = try ASN1.build(a.encode())
         let bb = try ASN1.build(b.encode())
         let cc = try ASN1.build(c.encode())
@@ -83,12 +83,10 @@ final class ASN1Tests: XCTestCase {
     }
 
     func testObjectIdentifier() throws {
-        let a = ASN1ObjectIdentifier("1.2.3.4")
+        let a = ASN1ObjectIdentifier("1.2.3.4")!
         let aa = try ASN1.build(a.encode())
         XCTAssertTrue(aa == a)
-        let b = ASN1ObjectIdentifier([])
-        let bb = try ASN1.build(b.encode())
-        XCTAssertTrue(bb == b)
+        XCTAssertNil(ASN1ObjectIdentifier([]))
     }
     
     func testOctetString() throws {
@@ -105,12 +103,12 @@ final class ASN1Tests: XCTestCase {
         let a1 = ASN1Sequence()
         a1.add(ASN1IA5String("IA5String"))
         a1.add(ASN1.ONE)
-        a1.add(ASN1ObjectIdentifier("1.2.3"))
+        a1.add(ASN1ObjectIdentifier("1.2.3")!)
         a1.add(ASN1UTCTime(date))
         let a2 = ASN1Sequence()
         a2.add(ASN1IA5String("IA5String"))
         a2.add(ASN1.ONE)
-        a2.add(ASN1ObjectIdentifier("1.2.3"))
+        a2.add(ASN1ObjectIdentifier("1.2.3")!)
         XCTAssertTrue(a1 != a2)
         a2.add(ASN1UTCTime(date))
         XCTAssertTrue(a1 == a2)
@@ -121,11 +119,11 @@ final class ASN1Tests: XCTestCase {
         let asn1set1 = ASN1Set()
         asn1set1.add(ASN1IA5String("IA5String"))
         asn1set1.add(ASN1.ONE)
-        asn1set1.add(ASN1ObjectIdentifier("1.2.3"))
+        asn1set1.add(ASN1ObjectIdentifier("1.2.3")!)
         asn1set1.add(ASN1UTCTime(date))
         let asn1set2 = ASN1Set()
         asn1set2.add(ASN1UTCTime(date))
-        asn1set2.add(ASN1ObjectIdentifier("1.2.3"))
+        asn1set2.add(ASN1ObjectIdentifier("1.2.3")!)
         asn1set2.add(ASN1.ONE)
         XCTAssertTrue(asn1set1 != asn1set2)
         asn1set2.add(ASN1IA5String("IA5String"))
@@ -136,10 +134,10 @@ final class ASN1Tests: XCTestCase {
         let a1 = ASN1Sequence()
         a1.add(ASN1IA5String("IA5String"))
         a1.add(ASN1.ONE)
-        a1.add(ASN1ObjectIdentifier("1.2.3"))
+        a1.add(ASN1ObjectIdentifier("1.2.3")!)
         let a2 = ASN1Sequence()
         a2.add(ASN1.ONE)
-        a2.add(ASN1ObjectIdentifier("1.2.3"))
+        a2.add(ASN1ObjectIdentifier("1.2.3")!)
         XCTAssertTrue(a1 != a2)
         a1.remove(0)
         XCTAssertTrue(a1 == a2)
@@ -149,10 +147,10 @@ final class ASN1Tests: XCTestCase {
         let a1 = ASN1Set()
         a1.add(ASN1IA5String("IA5String"))
         a1.add(ASN1.ONE)
-        a1.add(ASN1ObjectIdentifier("1.2.3"))
+        a1.add(ASN1ObjectIdentifier("1.2.3")!)
         let a2 = ASN1Set()
         a2.add(ASN1.ONE)
-        a2.add(ASN1ObjectIdentifier("1.2.3"))
+        a2.add(ASN1ObjectIdentifier("1.2.3")!)
         XCTAssertTrue(a1 != a2)
         a1.remove(2)
         XCTAssertTrue(a1 == a2)

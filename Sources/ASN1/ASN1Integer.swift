@@ -16,7 +16,11 @@ public class ASN1Integer: ASN1, CustomStringConvertible {
     /// Constructs an ASN1Integer instance from a big-endian 2's complement byte array
     ///
     /// - Parameter bytes: Byte array
-    public init(_ bytes: Bytes) {
+    /// - Throws: An ASN1Exception if *bytes* is empty
+    public init(_ bytes: Bytes) throws {
+        guard bytes.count > 0 else {
+            throw ASN1Exception.wrongData(position: 0)
+        }
         self.asBytes = bytes
         self.value = BInt(signed: bytes)
         super.init(ASN1.TAG_Integer)
