@@ -17,7 +17,7 @@ class PerformanceTest: XCTestCase {
         self.measure {
             do {
                 for _ in 0 ..< N {
-                    try ASN1.build(PerformanceTest.x)
+                    _ = try ASN1.build(PerformanceTest.x)
                 }
             } catch {
                 XCTFail("\(error)")
