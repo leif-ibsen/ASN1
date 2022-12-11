@@ -37,7 +37,7 @@ It supports the following ASN1 types:
 In your project Package.swift file add a dependency like<br/>
 
 	  dependencies: [
-	  .package(url: "https://github.com/leif-ibsen/ASN1", from: "2.0.2"),
+	  .package(url: "https://github.com/leif-ibsen/ASN1", from: "2.0.3"),
 	  ]
 
 <h3><b>Example 1</b></h3>

@@ -309,8 +309,10 @@ public class ASN1: Equatable {
         if tagClass == 2 {
             if length == INDEFINITE {
                 return try ASN1Ctx(tag, indefiniteLength(input))
+            } else if constructed {
+                return try ASN1Ctx(tag, length > 0 ? [ASN1.build(input.nextBytes(length))] : [])
             } else {
-                return try constructed ? ASN1Ctx(tag, [ASN1.build(input.nextBytes(length))]) : ASN1Ctx(tag, input.nextBytes(length))
+                return try ASN1Ctx(tag, input.nextBytes(length))
             }
         } else if tagClass == 0 {
             if length == INDEFINITE && tag != TAG_Sequence && tag != TAG_Set {
