@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import ASN1
 
 class ErrorTests: XCTestCase {
 

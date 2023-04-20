@@ -1,5 +1,5 @@
 import XCTest
-//@testable import ASN1
+@testable import ASN1
 import BigInt
 
 final class ASN1Tests: XCTestCase {

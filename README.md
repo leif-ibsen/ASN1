@@ -37,7 +37,7 @@ It supports the following ASN1 types:
 In your project Package.swift file add a dependency like<br/>
 
 	  dependencies: [
-	  .package(url: "https://github.com/leif-ibsen/ASN1", from: "2.0.3"),
+	  .package(url: "https://github.com/leif-ibsen/ASN1", from: "2.1.0"),
 	  ]
 
 <h3><b>Example 1</b></h3>
@@ -115,7 +115,7 @@ ASN1 requires Swift 5.0.
 The ASN1 package depends on the BigInt package
 
     dependencies: [
-        .package(url: "https://github.com/leif-ibsen/BigInt", from: "1.4.0"),
+        .package(url: "https://github.com/leif-ibsen/BigInt", from: "1.11.0"),
     ],
 
 <h3><b>References</b></h3>
