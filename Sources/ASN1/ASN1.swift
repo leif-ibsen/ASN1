@@ -14,7 +14,7 @@ public typealias Byte = UInt8
 /// Array of unsigned 8 bit values
 public typealias Bytes = [UInt8]
 
-/// The superclass of all ASN1-classes
+/// The superclass of all ASN1 classes
 public class ASN1: Equatable {
 
     // MARK: - Constants

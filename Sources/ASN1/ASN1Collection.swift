@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Superclass for ASN1Sequence and ASN1Set
+/// ASN1 Collection class
 public class ASN1Collection: ASN1 {
     
     var value: [ASN1]
