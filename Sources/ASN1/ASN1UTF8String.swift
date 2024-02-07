@@ -27,7 +27,7 @@ public class ASN1UTF8String: ASN1SimpleType, CustomStringConvertible {
     
     // MARK: Computed properties
     
-    /// Description of *self*
+    /// Description of `self`
     public override var description: String {
         return "UTF8String: " + String(bytes: self.value, encoding: .utf8)!
     }

@@ -21,12 +21,12 @@ public class ASN1Boolean: ASN1, CustomStringConvertible {
     
     // MARK: Stored properties
     
-    /// Value of *self*
+    /// Value of `self`
     public let value: Bool
     
     // MARK: Computed properties
     
-    /// Description of *self*
+    /// Description of `self`
     public override var description: String {
         return "Boolean: " + self.value.description
     }

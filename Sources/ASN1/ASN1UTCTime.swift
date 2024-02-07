@@ -29,7 +29,7 @@ public class ASN1UTCTime: ASN1Time, CustomStringConvertible {
     
     // MARK: Computed properties
     
-    /// Description of *self*
+    /// Description of `self`
     public override var description: String {
         return "UTCTime: " + String(bytes: self.value, encoding: .ascii)!
     }

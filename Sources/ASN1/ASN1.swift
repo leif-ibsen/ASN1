@@ -11,6 +11,7 @@ import BigInt
 
 /// Unsigned 8 bit value
 public typealias Byte = UInt8
+
 /// Array of unsigned 8 bit values
 public typealias Bytes = [UInt8]
 
@@ -72,7 +73,7 @@ public class ASN1: Equatable {
 
     // MARK: Computed properties
 
-    /// Description of *self*
+    /// Description of `self`
     public var description: String { get { return "ASN1" } }
 
     // MARK: Functions
@@ -82,7 +83,7 @@ public class ASN1: Equatable {
     /// - Parameters:
     ///   - a1: an ASN1 instance
     ///   - a2: an ASN1 instance
-    /// - Returns: *true* if a1 and a2 have the same tag and same value, *false* otherwise
+    /// - Returns: `true` if a1 and a2 have the same tag and same value, `false` otherwise
     public static func == (a1: ASN1, a2: ASN1) -> Bool {
         if type(of: a1) != type(of: a2) {
             return false
@@ -139,9 +140,9 @@ public class ASN1: Equatable {
         }
     }
 
-    /// Encode *self* as a byte array
+    /// Encode `self` as a byte array
     ///
-    /// - Returns: ASN1 DER encoding of *self*
+    /// - Returns: ASN1 DER encoding of `self`
     public func encode() -> Bytes {
         var bytes = Bytes()
         doEncode(&bytes)

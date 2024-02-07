@@ -18,7 +18,7 @@ public class ASN1Null: ASN1, CustomStringConvertible {
 
     // MARK: Computed properties
     
-    /// Description of *self*
+    /// Description of `self`
     public override var description: String {
         return "Null"
     }

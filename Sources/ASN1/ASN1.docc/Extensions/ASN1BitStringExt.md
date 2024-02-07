@@ -8,6 +8,6 @@
 - ``unused``
 - ``description``
 
-### Constructors
+### Constructor
 
 - ``init(_:_:)``

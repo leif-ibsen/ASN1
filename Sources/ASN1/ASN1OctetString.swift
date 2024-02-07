@@ -20,7 +20,7 @@ public class ASN1OctetString: ASN1SimpleType, CustomStringConvertible {
     
     // MARK: Computed properties
     
-    /// Description of *self*
+    /// Description of `self`
     public override var description: String {
         var s = "Octet String (" + self.value.count.description + "):"
         for i in 0 ..< self.value.count {

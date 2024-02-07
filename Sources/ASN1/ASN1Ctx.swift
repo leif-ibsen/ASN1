@@ -36,14 +36,14 @@ public class ASN1Ctx: ASN1, CustomStringConvertible {
 
     // MARK: Stored properties
     
-    /// Value of *self* if it is a constructed value, otherwise *nil*
+    /// Value of `self` if it is a constructed value, otherwise `nil`
     public var value: [ASN1]?
-    /// Value of *self* if it is a primitive value, otherwise *nil*
+    /// Value of `self` if it is a primitive value, otherwise `nil`
     public var bytes: Bytes?
 
     // MARK: Computed properties
     
-    /// Description of *self*
+    /// Description of `self`
     public override var description: String {
         var s = ""
         doDump(&s, 0)

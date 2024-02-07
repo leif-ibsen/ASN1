@@ -27,7 +27,7 @@ public class ASN1IA5String: ASN1SimpleType, CustomStringConvertible {
 
     // MARK: Computed properties
 
-    /// Description of *self*
+    /// Description of `self`
     public override var description: String {
         return "IA5String: " + String(bytes: self.value, encoding: .ascii)!
     }

@@ -6,9 +6,9 @@ The ASN1 package implements a subset of the ASN1 (Abstract Syntax Notation One) 
 It is intended to be used in writing cryptographic applications like ECIES and ECDSA in Swift.
 
 > Important:
-ASN1 requires Swift 5.0. It also requires that the Int and UInt types be 64 bit types.
+ASN1 requires Swift 5.0. It also requires that the `Int` and `UInt` types be 64 bit types.
 
-### ASN1 functionality:
+### ASN1 functionality
 
 * Building ASN1 structures from their byte array representation
 * DER encoding of ASN1 structures
@@ -18,7 +18,7 @@ ASN1 requires Swift 5.0. It also requires that the Int and UInt types be 64 bit 
 * Tag numbers less than 128
 * Universal (0) and context-specific (2) tag classes
 
-### It supports the following ASN1 types:
+### Supported ASN1 types
 
 * BitString
 * BMPString

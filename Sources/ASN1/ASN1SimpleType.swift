@@ -26,7 +26,7 @@ public class ASN1SimpleType: ASN1 {
     
     // MARK: Stored properties
     
-    /// Value of *self*
+    /// Value of `self`
     public let value: Bytes
 
 }

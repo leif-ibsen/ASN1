@@ -16,7 +16,7 @@ public class ASN1Integer: ASN1, CustomStringConvertible {
     /// Constructs an ASN1Integer instance from a big-endian 2's complement byte array
     ///
     /// - Parameter bytes: Byte array
-    /// - Throws: An ASN1Exception if *bytes* is empty
+    /// - Throws: An ASN1Exception if `bytes` is empty
     public init(_ bytes: Bytes) throws {
         guard bytes.count > 0 else {
             throw ASN1Exception.wrongData(position: 0)
@@ -37,14 +37,14 @@ public class ASN1Integer: ASN1, CustomStringConvertible {
     
     // MARK: Stored properties
     
-    /// Value of *self*
+    /// Value of `self`
     public let value: BInt
 
     let asBytes: Bytes
     
     // MARK: Computed properties
     
-    /// Description of *self*
+    /// Description of `self`
     public override var description: String {
         return "Integer: " + self.value.asString(radix: 10)
     }

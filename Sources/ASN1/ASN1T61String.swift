@@ -27,7 +27,7 @@ public class ASN1T61String: ASN1SimpleType, CustomStringConvertible {
     
     // MARK: Computed properties
     
-    /// Description of *self*
+    /// Description of `self`
     public override var description: String {
         return "T61String: " + String(bytes: self.value, encoding: .isoLatin1)!
     }

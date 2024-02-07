@@ -27,7 +27,7 @@ public class ASN1PrintableString: ASN1SimpleType, CustomStringConvertible {
     
     // MARK: Computed properties
     
-    /// Description of *self*
+    /// Description of `self`
     public override var description: String {
         return "PrintableString: " + String(bytes: self.value, encoding: .ascii)!
     }

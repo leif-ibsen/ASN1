@@ -29,7 +29,7 @@ public class ASN1GeneralizedTime: ASN1Time, CustomStringConvertible {
     
     // MARK: Computed properties
     
-    /// Description of *self*
+    /// Description of `self`
     public override var description: String {
         return "GeneralizedTime: " + String(bytes: self.value, encoding: .ascii)!
     }

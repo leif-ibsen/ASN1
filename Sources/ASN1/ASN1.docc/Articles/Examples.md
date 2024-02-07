@@ -30,7 +30,7 @@ let privKey = BInt(magnitude: privBytes.value)
 
 print("Private key =", privKey)
 ```
-giving
+giving:
 ```swift
 Sequence (4):
   Integer: 1
@@ -63,7 +63,7 @@ print(seq)
 let b = seq.encode()
 print("Byte array =", b)
 ```
-giving</br>
+giving:
 ```swift
 Sequence (2):
   Integer: 1

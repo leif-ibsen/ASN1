@@ -25,7 +25,7 @@ public class ASN1Set: ASN1Collection, CustomStringConvertible {
     
     // MARK: Computed properties
     
-    /// Description of *self*
+    /// Description of `self`
     public override var description: String {
         var s = ""
         doDump(&s, 0)

@@ -16,7 +16,7 @@ public class ASN1BitString: ASN1, CustomStringConvertible {
     /// - Parameters:
     ///   - bits: Byte array containing the bits
     ///   - unused: Number of unused bits
-    /// - Throws: An ASN1Exception if *unused* has an illegal value
+    /// - Throws: An ASN1Exception if `unused` has an illegal value
     public init(_ bits: Bytes, _ unused: Byte) throws {
         guard (bits.count > 0 && unused < 8) || (bits.count == 0 && unused == 0) else {
             throw ASN1Exception.wrongData(position: 0)
@@ -28,14 +28,14 @@ public class ASN1BitString: ASN1, CustomStringConvertible {
     
     // MARK: Stored properties
     
-    /// The bits of *self*
+    /// The bits of `self`
     public let bits: Bytes
     /// The number of unused bits
     public let unused: Byte
     
     // MARK: Computed properties
     
-    /// Description of *self*
+    /// Description of `self`
     public override var description: String {
         var s = "Bit String (" + (self.bits.count * 8 - Int(self.unused)).description + "):"
         if self.bits.count > 0 {

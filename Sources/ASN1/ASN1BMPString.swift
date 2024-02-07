@@ -27,7 +27,7 @@ public class ASN1BMPString: ASN1SimpleType, CustomStringConvertible {
 
     // MARK: - Computed properties
 
-    /// Description of *self*
+    /// Description of `self`
     public override var description: String {
         return "BMPString: " + String(bytes: self.value, encoding: .utf16)!
     }

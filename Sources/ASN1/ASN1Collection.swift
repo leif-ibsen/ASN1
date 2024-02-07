@@ -29,7 +29,7 @@ public class ASN1Collection: ASN1 {
     
     /// Get collection
     ///
-    /// - Returns: Value of *self*
+    /// - Returns: Value of `self`
     public func getValue() -> [ASN1] {
         return self.value
     }
@@ -37,7 +37,7 @@ public class ASN1Collection: ASN1 {
     /// Add a value to a collection
     ///
     /// - Parameter asn1: Value to add
-    /// - Returns: *self*
+    /// - Returns: `self`
     public func add(_ asn1: ASN1) -> ASN1Collection {
         self.value.append(asn1)
         if self.tag == ASN1.TAG_Set {
@@ -55,6 +55,7 @@ public class ASN1Collection: ASN1 {
     }
     
     /// Remove a value from a collection - a set or a sequence.
+    /// 
     /// Note that a set is sorted by its element's tags,
     /// so a set element's index may not match the order in which it was inserted
     ///

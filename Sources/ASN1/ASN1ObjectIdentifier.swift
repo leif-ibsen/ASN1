@@ -13,7 +13,7 @@ public class ASN1ObjectIdentifier: ASN1SimpleType, CustomStringConvertible, Hash
     
     // MARK: - Initializers
 
-    /// Constructs an ASN1ObjectIdentifier instance from a branch of an ASN1ObjectIdentifier, *nil* if *branch* is negative
+    /// Constructs an ASN1ObjectIdentifier instance from a branch of an ASN1ObjectIdentifier, `nil` if `branch` is negative
     ///
     /// - Parameters:
     ///   - oid: Object identifier
@@ -31,7 +31,7 @@ public class ASN1ObjectIdentifier: ASN1SimpleType, CustomStringConvertible, Hash
         }
     }
 
-    /// Constructs an ASN1ObjectIdentifier instance from a String, *nil* if *oid* is wrong
+    /// Constructs an ASN1ObjectIdentifier instance from a String, `nil` if `oid` is wrong
     ///
     /// - Parameter oid: String value
     public init?(_ oid: String) {
@@ -44,7 +44,7 @@ public class ASN1ObjectIdentifier: ASN1SimpleType, CustomStringConvertible, Hash
         }
     }
     
-    /// Constructs an ASN1ObjectIdentifier instance from a byte array, *nil* if *value* is wrong
+    /// Constructs an ASN1ObjectIdentifier instance from a byte array, `nil` if `value` is wrong
     ///
     /// - Parameter value: Byte array
     public init?(_ value: Bytes) {
@@ -58,19 +58,19 @@ public class ASN1ObjectIdentifier: ASN1SimpleType, CustomStringConvertible, Hash
     
     // MARK: Stored properties
     
-    /// Value of *self*
+    /// Value of `self`
     public let oid: String
 
     // MARK: Computed properties
     
-    /// Description of *self*
+    /// Description of `self`
     public override var description: String {
         return "Object Identifier: " + self.oid
     }
 
     // MARK: - Functions
 
-    /// Get a specified branch of *self*
+    /// Get a specified branch of `self`
     ///
     /// - Parameter i: Branch number
     /// - Returns: The specified branch
