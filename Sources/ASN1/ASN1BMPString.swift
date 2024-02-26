@@ -6,7 +6,7 @@
 //  Copyright © 2018 Leif Ibsen. All rights reserved.
 //
 
-/// ASN1 BMPString class
+/// The ASN1 BMPString class
 public class ASN1BMPString: ASN1SimpleType, CustomStringConvertible {
     
     // MARK: - Initializers

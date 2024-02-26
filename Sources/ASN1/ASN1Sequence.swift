@@ -6,7 +6,7 @@
 //  Copyright © 2018 Leif Ibsen. All rights reserved.
 //
 
-/// ASN1 Sequence class
+/// The ASN1 Sequence class
 public class ASN1Sequence: ASN1Collection, CustomStringConvertible {
     
     // MARK: - Initializers

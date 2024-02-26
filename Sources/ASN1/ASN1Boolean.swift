@@ -6,7 +6,7 @@
 //  Copyright © 2018 Leif Ibsen. All rights reserved.
 //
 
-/// ASN1 Boolean class
+/// The ASN1 Boolean class
 public class ASN1Boolean: ASN1, CustomStringConvertible {
     
     // MARK: - Initializers

@@ -8,7 +8,7 @@
 
 import BigInt
 
-/// ASN1 Integer class
+/// The ASN1 Integer class
 public class ASN1Integer: ASN1, CustomStringConvertible {
 
     // MARK: - Initializers

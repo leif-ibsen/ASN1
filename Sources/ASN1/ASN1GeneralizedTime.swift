@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// ASN1 GeneralizedTime class
+/// The ASN1 GeneralizedTime class
 public class ASN1GeneralizedTime: ASN1Time, CustomStringConvertible {
     
     // MARK: - Initializers

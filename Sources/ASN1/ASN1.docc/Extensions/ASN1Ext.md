@@ -33,3 +33,7 @@
 - ``encode()``
 - ``build(_:)-55xna``
 - ``build(_:)-3ao4g``
+
+### Equality
+
+- ``==(_:_:)``

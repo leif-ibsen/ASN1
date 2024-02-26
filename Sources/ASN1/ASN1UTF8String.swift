@@ -6,7 +6,7 @@
 //  Copyright © 2018 Leif Ibsen. All rights reserved.
 //
 
-/// ASN1 UTF8String class
+/// The ASN1 UTF8String class
 public class ASN1UTF8String: ASN1SimpleType, CustomStringConvertible {
     
     // MARK: - Initializers

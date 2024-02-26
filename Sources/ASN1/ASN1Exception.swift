@@ -6,7 +6,7 @@
 //  Copyright © 2018 Leif Ibsen. All rights reserved.
 //
 
-/// ASN1 exceptions
+/// The ASN1 exceptions
 public enum ASN1Exception: Error {
 
     /// An ASN1 value is too long, max four length bytes are supported

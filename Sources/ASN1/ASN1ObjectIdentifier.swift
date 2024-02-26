@@ -8,7 +8,7 @@
 
 import BigInt
 
-/// ASN1 ObjectIdentifier class
+/// The ASN1 ObjectIdentifier class
 public class ASN1ObjectIdentifier: ASN1SimpleType, CustomStringConvertible, Hashable {
     
     // MARK: - Initializers

@@ -6,7 +6,7 @@
 //  Copyright © 2018 Leif Ibsen. All rights reserved.
 //
 
-/// ASN1 BitString class
+/// The ASN1 BitString class
 public class ASN1BitString: ASN1, CustomStringConvertible {
     
     // MARK: - Initializers

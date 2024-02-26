@@ -6,7 +6,7 @@
 //  Copyright © 2018 Leif Ibsen. All rights reserved.
 //
 
-/// ASN1 OctetString class
+/// The ASN1 OctetString class
 public class ASN1OctetString: ASN1SimpleType, CustomStringConvertible {
     
     // MARK: - Initializers

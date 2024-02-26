@@ -6,7 +6,7 @@
 //  Copyright © 2018 Leif Ibsen. All rights reserved.
 //
 
-/// ASN1 Set class
+/// The ASN1 Set class
 public class ASN1Set: ASN1Collection, CustomStringConvertible {
     
     // MARK: - Initializers

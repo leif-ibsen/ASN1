@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// ASN1 UTCTime class
+/// The ASN1 UTCTime class
 public class ASN1UTCTime: ASN1Time, CustomStringConvertible {
     
     // MARK: - Initializers

@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// ASN1 Ctx class - a placeholder for ASN1 values of the context-specific class
+/// The ASN1 Ctx class - a placeholder for ASN1 values of the context-specific class
 public class ASN1Ctx: ASN1, CustomStringConvertible {
     
     // MARK: - Initializers

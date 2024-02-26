@@ -6,7 +6,7 @@
 //  Copyright © 2018 Leif Ibsen. All rights reserved.
 //
 
-/// ASN1 T61String class
+/// The ASN1 T61String class
 public class ASN1T61String: ASN1SimpleType, CustomStringConvertible {
 
     // MARK: - Initializers

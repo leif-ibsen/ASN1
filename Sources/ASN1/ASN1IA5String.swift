@@ -6,7 +6,7 @@
 //  Copyright © 2018 Leif Ibsen. All rights reserved.
 //
 
-/// ASN1 IA5String class
+/// The ASN1 IA5String class
 public class ASN1IA5String: ASN1SimpleType, CustomStringConvertible {
     
     // MARK: - Initializers

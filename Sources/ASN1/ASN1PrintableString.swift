@@ -6,7 +6,7 @@
 //  Copyright © 2018 Leif Ibsen. All rights reserved.
 //
 
-/// ASN1 PrintableString class
+/// The ASN1 PrintableString class
 public class ASN1PrintableString: ASN1SimpleType, CustomStringConvertible {
 
     // MARK: - Initializers

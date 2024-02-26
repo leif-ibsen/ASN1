@@ -6,7 +6,7 @@
 //  Copyright © 2018 Leif Ibsen. All rights reserved.
 //
 
-/// ASN1 Null class
+/// The ASN1 Null class
 public class ASN1Null: ASN1, CustomStringConvertible {
     
     // MARK: - Initializers
