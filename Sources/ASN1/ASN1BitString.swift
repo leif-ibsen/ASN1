@@ -21,7 +21,7 @@ public class ASN1BitString: ASN1, CustomStringConvertible {
         guard (bits.count > 0 && unused < 8) || (bits.count == 0 && unused == 0) else {
             throw ASN1Exception.wrongData(position: 0)
         }
-        self.bits = bits
+        self.bits = unused == 0 ? bits : bits[0 ..< bits.count - 1] + [(bits[bits.count - 1] >> unused) << unused]
         self.unused = unused
         super.init(ASN1.TAG_BitString)
     }

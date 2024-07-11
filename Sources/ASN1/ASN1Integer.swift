@@ -21,8 +21,8 @@ public class ASN1Integer: ASN1, CustomStringConvertible {
         guard bytes.count > 0 else {
             throw ASN1Exception.wrongData(position: 0)
         }
-        self.asBytes = bytes
         self.value = BInt(signed: bytes)
+        self.asBytes = self.value.asSignedBytes()
         super.init(ASN1.TAG_Integer)
     }
 
@@ -31,7 +31,7 @@ public class ASN1Integer: ASN1, CustomStringConvertible {
     /// - Parameter value: BInt value
     public init(_ value: BInt) {
         self.value = value
-        self.asBytes = value.asSignedBytes()
+        self.asBytes = self.value.asSignedBytes()
         super.init(ASN1.TAG_Integer)
     }
     

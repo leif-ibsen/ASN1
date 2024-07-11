@@ -111,7 +111,7 @@ To use ASN1, in your project *Package.swift* file add a dependency like
 
 ```swift
 dependencies: [
-  .package(url: "https://github.com/leif-ibsen/ASN1", from: "2.5.0"),
+  .package(url: "https://github.com/leif-ibsen/ASN1", from: "2.6.0"),
 ]
 ```
 

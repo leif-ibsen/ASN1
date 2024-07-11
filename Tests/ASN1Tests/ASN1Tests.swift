@@ -8,10 +8,31 @@ final class ASN1Tests: XCTestCase {
         let a = try ASN1BitString([1, 2, 3], 3)
         let aa = try ASN1.build(a.encode())
         XCTAssertTrue(aa == a)
+        
         let b = try ASN1BitString([], 0)
         XCTAssertTrue(b.description == "Bit String (0):")
         let bb = try ASN1BitString([128], 7)
         XCTAssertTrue(bb.description == "Bit String (1): 1")
+        
+        let c = try ASN1BitString([0x6e, 0x5d, 0xe0], 6)
+        XCTAssertTrue(c.bits == [0x6e, 0x5d, 0xc0])
+        XCTAssertTrue(c.unused == 6)
+        
+        let d = try ASN1BitString([0x6e, 0x5d, 0xe0], 0)
+        XCTAssertTrue(d.bits == [0x6e, 0x5d, 0xe0])
+        XCTAssertTrue(d.unused == 0)
+        
+        let e = try ASN1BitString([0xe0], 6)
+        XCTAssertTrue(e.bits == [0xc0])
+        XCTAssertTrue(e.unused == 6)
+        
+        let f = try ASN1BitString([0xef], 0)
+        XCTAssertTrue(f.bits == [0xef])
+        XCTAssertTrue(f.unused == 0)
+        
+        let g = try ASN1BitString([], 0)
+        XCTAssertTrue(g.bits == [])
+        XCTAssertTrue(g.unused == 0)
     }
 
     func testBoolean() throws {
@@ -74,6 +95,9 @@ final class ASN1Tests: XCTestCase {
         XCTAssertTrue(bb == b)
         XCTAssertTrue(cc == c)
         XCTAssertTrue(dd == d)
+
+        XCTAssertEqual(try ASN1Integer([0, 0, 1]).encode(), [2, 1, 1])
+        XCTAssertEqual(try ASN1Integer([255, 255, 255]).encode(), [2, 1, 255])
     }
 
     func testNull() throws {
