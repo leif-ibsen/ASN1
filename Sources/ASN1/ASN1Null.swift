@@ -6,12 +6,12 @@
 //  Copyright © 2018 Leif Ibsen. All rights reserved.
 //
 
-/// The ASN1 Null class
+/// The `ASN1` Null class
 public class ASN1Null: ASN1, CustomStringConvertible {
     
     // MARK: - Initializers
 
-    /// Constructs an ASN1Null instance
+    /// Constructs an `ASN1Null` instance
     public init() {
         super.init(ASN1.TAG_Null)
     }

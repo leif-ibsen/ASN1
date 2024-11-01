@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// The ASN1 Time class
+/// The `ASN1` Time class
 public class ASN1Time: ASN1SimpleType {
     
     init(_ tag: Byte, _ date: Date, _ generalizedTime: Bool) {

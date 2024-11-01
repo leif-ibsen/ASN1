@@ -8,21 +8,21 @@
 
 import Foundation
 
-/// The ASN1 GeneralizedTime class
+/// The `ASN1` GeneralizedTime class
 public class ASN1GeneralizedTime: ASN1Time, CustomStringConvertible {
     
     // MARK: - Initializers
 
-    /// Constructs an ASN1GeneralizedTime instance from a Date
+    /// Constructs an `ASN1GeneralizedTime` instance from a Date
     ///
-    /// - Parameter date: Date
+    /// - Parameter date: The date
     public init(_ date: Date) {
         super.init(ASN1.TAG_GeneralizedTime, date, true)
     }
     
-    /// Constructs an ASN1GeneralizedTime instance from a byte array
+    /// Constructs an `ASN1GeneralizedTime` instance from a byte array
     ///
-    /// - Parameter bytes: Byte array
+    /// - Parameter bytes: The byte array
     public init(_ bytes: Bytes) {
         super.init(ASN1.TAG_GeneralizedTime, bytes, true)
     }

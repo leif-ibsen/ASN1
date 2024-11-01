@@ -6,21 +6,21 @@
 //  Copyright © 2018 Leif Ibsen. All rights reserved.
 //
 
-/// The ASN1 T61String class
+/// The `ASN1` T61String class
 public class ASN1T61String: ASN1SimpleType, CustomStringConvertible {
 
     // MARK: - Initializers
 
-    /// Constructs an ASN1T61String instance from a byte array
+    /// Constructs an `ASN1T61String` instance from a byte array
     ///
-    /// - Parameter s: Byte array
+    /// - Parameter s: The byte array
     public init(_ s: Bytes) {
         super.init(ASN1.TAG_T61String, s)
     }
     
-    /// Constructs an ASN1T61String instance from a String value
+    /// Constructs an `ASN1T61String` instance from a String value
     ///
-    /// - Parameter s: String value
+    /// - Parameter s: The String value
     public convenience init(_ s: String) {
         self.init(ASN1.getISO8859Bytes(s))
     }

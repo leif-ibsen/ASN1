@@ -6,21 +6,21 @@
 //  Copyright © 2018 Leif Ibsen. All rights reserved.
 //
 
-/// The ASN1 UTF8String class
+/// The `ASN1` UTF8String class
 public class ASN1UTF8String: ASN1SimpleType, CustomStringConvertible {
     
     // MARK: - Initializers
 
-    /// Constructs an ASN1UTF8String instance from a byte array
+    /// Constructs an `ASN1UTF8String` instance from a byte array
     ///
-    /// - Parameter s: Byte array
+    /// - Parameter s: The byte array
     public init(_ s: Bytes) {
         super.init(ASN1.TAG_UTF8String, s)
     }
     
-    /// Constructs an ASN1UTF8String instance from a String value
+    /// Constructs an `ASN1UTF8String` instance from a String value
     ///
-    /// - Parameter s: String value
+    /// - Parameter s: The String value
     public convenience init(_ s: String) {
         self.init(ASN1.getUTF8Bytes(s))
     }

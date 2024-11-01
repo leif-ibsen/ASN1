@@ -7,12 +7,12 @@
 
 import Foundation
 
-/// The ASN1 Ctx class - a placeholder for ASN1 values of the context-specific class
+/// The `ASN1` Ctx class - a placeholder for `ASN1` values of the context-specific class
 public class ASN1Ctx: ASN1, CustomStringConvertible {
     
     // MARK: - Initializers
 
-    /// Constructs an ASN1Ctx instance containing a constructed value
+    /// Constructs an `ASN1Ctx` instance containing a constructed value
     ///
     /// - Parameters:
     ///   - tag: Instance tag
@@ -23,11 +23,11 @@ public class ASN1Ctx: ASN1, CustomStringConvertible {
         super.init(tag)
     }
 
-    /// Constructs an ASN1Ctx instance containing a primitive value
+    /// Constructs an `ASN1Ctx` instance containing a primitive value
     ///
     /// - Parameters:
     ///   - tag: Instance tag
-    ///   - bytes: Instance value
+    ///   - bytes: Instance bytes
     public init(_ tag: Byte, _ bytes: Bytes) {
         self.value = nil
         self.bytes = bytes

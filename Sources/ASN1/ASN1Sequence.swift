@@ -6,19 +6,19 @@
 //  Copyright © 2018 Leif Ibsen. All rights reserved.
 //
 
-/// The ASN1 Sequence class
+/// The `ASN1` Sequence class
 public class ASN1Sequence: ASN1Collection, CustomStringConvertible {
     
     // MARK: - Initializers
 
-    /// Constructs an empty ASN1Sequence instance
+    /// Constructs an empty `ASN1Sequence` instance
     public convenience init() {
         self.init([ASN1]())
     }
     
-    /// Constructs an ASN1Sequence instance from an ASN1 array
+    /// Constructs an `ASN1Sequence` instance from an array of `ASN1` elements
     ///
-    /// - Parameter sequence: ASN1 array
+    /// - Parameter sequence: The `ASN1` array
     public init(_ sequence : [ASN1]) {
         super.init(ASN1.TAG_Sequence, sequence, false)
     }

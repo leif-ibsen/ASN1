@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// The ASN1 Collection class
+/// The `ASN1` Collection class
 public class ASN1Collection: ASN1 {
     
     var value: [ASN1]

@@ -6,21 +6,21 @@
 //  Copyright © 2018 Leif Ibsen. All rights reserved.
 //
 
-/// The ASN1 BMPString class
+/// The `ASN1` BMPString class
 public class ASN1BMPString: ASN1SimpleType, CustomStringConvertible {
     
     // MARK: - Initializers
     
-    /// Constructs an ASN1BMPString instance from a byte array
+    /// Constructs an `ASN1BMPString` instance from a byte array
     ///
-    /// - Parameter s: Byte array
+    /// - Parameter s: The byte array
     public init(_ s: Bytes) {
         super.init(ASN1.TAG_BMPString, s)
     }
     
-    /// Constructs an ASN1BMPString instance from a String value
+    /// Constructs an `ASN1BMPString` instance from a String value
     ///
-    /// - Parameter s: String value
+    /// - Parameter s: The String value
     public convenience init(_ s: String) {
         self.init(ASN1.getUTF16Bytes(s))
     }

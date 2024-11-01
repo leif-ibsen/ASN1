@@ -6,19 +6,19 @@
 //  Copyright © 2018 Leif Ibsen. All rights reserved.
 //
 
-/// The ASN1 Set class
+/// The `ASN1` Set class
 public class ASN1Set: ASN1Collection, CustomStringConvertible {
     
     // MARK: - Initializers
 
-    /// Constructs an empty ASN1Set instance
+    /// Constructs an empty `ASN1Set` instance
     public convenience init() {
         self.init([ASN1]())
     }
     
-    /// Constructs an ASN1Set instance from an ASN1 array
+    /// Constructs an `ASN1Set` instance from an array of `ASN1` elements
     ///
-    /// - Parameter sequence: ASN1 array
+    /// - Parameter set: The `ASN1` array
     public init(_ set: [ASN1]) {
         super.init(ASN1.TAG_Set, set, true)
     }

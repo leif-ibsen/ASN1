@@ -15,47 +15,47 @@ public typealias Byte = UInt8
 /// Array of unsigned 8 bit values
 public typealias Bytes = [UInt8]
 
-/// The superclass of all ASN1 classes
+/// The superclass of all `ASN1` classes
 public class ASN1: Equatable {
 
     // MARK: - Constants
 
-    /// ASN1 null value
+    /// `ASN1` null value
     public static let NULL = ASN1Null()
-    /// ASN1 integer 0
+    /// `ASN1` integer 0
     public static let ZERO = ASN1Integer(BInt.ZERO)
-    /// ASN1 integer 1
+    /// `ASN1` integer 1
     public static let ONE = ASN1Integer(BInt.ONE)
 
-    /// ASN1 Boolean tag = 1
+    /// `ASN1` Boolean tag = 1
     public static let TAG_Boolean = Byte(1)
-    /// ASN1 Integer tag = 2
+    /// `ASN1` Integer tag = 2
     public static let TAG_Integer = Byte(2)
-    /// ASN1 BitString tag = 3
+    /// `ASN1` BitString tag = 3
     public static let TAG_BitString = Byte(3)
-    /// ASN1 OctetString tag = 4
+    /// `ASN1` OctetString tag = 4
     public static let TAG_OctetString = Byte(4)
-    /// ASN1 Null tag = 5
+    /// `ASN1` Null tag = 5
     public static let TAG_Null = Byte(5)
-    /// ASN1 ObjectIdentifier tag = 6
+    /// `ASN1` ObjectIdentifier tag = 6
     public static let TAG_ObjectIdentifier = Byte(6)
-    /// ASN1 UTF8String tag = 12
+    /// `ASN1` UTF8String tag = 12
     public static let TAG_UTF8String = Byte(12)
-    /// ASN1 Sequence tag = 16
+    /// `ASN1` Sequence tag = 16
     public static let TAG_Sequence = Byte(16)
-    /// ASN1 Set tag = 17
+    /// `ASN1` Set tag = 17
     public static let TAG_Set = Byte(17)
-    /// ASN1 PrintableString tag = 19
+    /// `ASN1` PrintableString tag = 19
     public static let TAG_PrintableString = Byte(19)
-    /// ASN1 T61String tag = 20
+    /// `ASN1` T61String tag = 20
     public static let TAG_T61String = Byte(20)
-    /// ASN1 IA5String tag = 22
+    /// `ASN1` IA5String tag = 22
     public static let TAG_IA5String = Byte(22)
-    /// ASN1 UTCTime tag = 23
+    /// `ASN1` UTCTime tag = 23
     public static let TAG_UTCTime = Byte(23)
-    /// ASN1 GeneralizedTime tag = 24
+    /// `ASN1` GeneralizedTime tag = 24
     public static let TAG_GeneralizedTime = Byte(24)
-    /// ASN1 BMPString tag = 30
+    /// `ASN1` BMPString tag = 30
     public static let TAG_BMPString = Byte(30)
 
     static let hex = [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f" ]
@@ -68,7 +68,7 @@ public class ASN1: Equatable {
     
     // MARK: Stored properties
     
-    /// The ASN1 tag
+    /// The `ASN1` tag
     public let tag: Byte
 
     // MARK: Computed properties
@@ -81,8 +81,8 @@ public class ASN1: Equatable {
     /// Equality of two ASN1 instances
     ///
     /// - Parameters:
-    ///   - a1: an ASN1 instance
-    ///   - a2: an ASN1 instance
+    ///   - a1: An `ASN1` instance
+    ///   - a2: An `ASN1` instance
     /// - Returns: `true` if a1 and a2 have the same tag and same value, `false` otherwise
     public static func == (a1: ASN1, a2: ASN1) -> Bool {
         if type(of: a1) != type(of: a2) {
@@ -142,27 +142,27 @@ public class ASN1: Equatable {
 
     /// Encode `self` as a byte array
     ///
-    /// - Returns: ASN1 DER encoding of `self`
+    /// - Returns: `ASN1` DER encoding of `self`
     public func encode() -> Bytes {
         var bytes = Bytes()
         doEncode(&bytes)
         return bytes
     }
 
-    /// Build an ASN1 instance from a Data stream
+    /// Build an `ASN1` instance from a Data stream
     ///
-    /// - Parameter stream: Data instance containing the ASN1 DER encoding
-    /// - Returns: An ASN1 instance
-    /// - Throws: An ASN1Exception if the input is invalid
+    /// - Parameter stream: Data instance containing the `ASN1` DER encoding
+    /// - Returns: An `ASN1` instance
+    /// - Throws: An `ASN1Exception` if the input is invalid
     public static func build(_ stream: Data) throws -> ASN1 {
         return try doBuild(InputStream(stream))
     }
     
-    /// Build an ASN1 instance from a byte array
+    /// Build an `ASN1` instance from a byte array
     ///
-    /// - Parameter bytes: Byte array containing the ASN1 DER encoding
-    /// - Returns: An ASN1 instance
-    /// - Throws: An ASN1Exception if the input is invalid
+    /// - Parameter bytes: Byte array containing the `ASN1` DER encoding
+    /// - Returns: An `ASN1` instance
+    /// - Throws: An `ASN1Exception` if the input is invalid
     public static func build(_ bytes: Bytes) throws -> ASN1 {
         return try doBuild(InputStream(bytes))
     }

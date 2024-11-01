@@ -6,17 +6,17 @@
 //  Copyright © 2018 Leif Ibsen. All rights reserved.
 //
 
-/// The ASN1 BitString class
+/// The `ASN1` BitString class
 public class ASN1BitString: ASN1, CustomStringConvertible {
     
     // MARK: - Initializers
 
-    /// Constructs an ASN1BitString instance
+    /// Constructs an `ASN1BitString` instance
     ///
     /// - Parameters:
     ///   - bits: Byte array containing the bits
     ///   - unused: Number of unused bits
-    /// - Throws: An ASN1Exception if `unused` has an illegal value
+    /// - Throws: An `ASN1Exception` if `unused` has an illegal value
     public init(_ bits: Bytes, _ unused: Byte) throws {
         guard (bits.count > 0 && unused < 8) || (bits.count == 0 && unused == 0) else {
             throw ASN1Exception.wrongData(position: 0)

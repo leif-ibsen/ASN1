@@ -6,7 +6,7 @@
 //  Copyright © 2018 Leif Ibsen. All rights reserved.
 //
 
-/// The ASN1 SimpleType class
+/// The `ASN1` SimpleType class
 public class ASN1SimpleType: ASN1 {
     
     init(_ tag: Byte, _ value: Bytes) {

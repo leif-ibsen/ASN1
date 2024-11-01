@@ -6,14 +6,14 @@
 //  Copyright © 2018 Leif Ibsen. All rights reserved.
 //
 
-/// The ASN1 OctetString class
+/// The `ASN1` OctetString class
 public class ASN1OctetString: ASN1SimpleType, CustomStringConvertible {
     
     // MARK: - Initializers
 
-    /// Constructs an ASN1OctetString instance from a byte array
+    /// Constructs an `ASN1OctetString` instance from a byte array
     ///
-    /// - Parameter value: Byte array
+    /// - Parameter value: The byte array
     public init(_ value: Bytes) {
         super.init(ASN1.TAG_OctetString, value)
     }

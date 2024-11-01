@@ -6,14 +6,14 @@
 //  Copyright © 2018 Leif Ibsen. All rights reserved.
 //
 
-/// The ASN1 Boolean class
+/// The `ASN1` Boolean class
 public class ASN1Boolean: ASN1, CustomStringConvertible {
     
     // MARK: - Initializers
 
-    /// Constructs an ASN1Boolean instance
+    /// Constructs an `ASN1Boolean` instance
     ///
-    /// - Parameter value: Value
+    /// - Parameter value: The value
     public init(_ value: Bool) {
         self.value = value
         super.init(ASN1.TAG_Boolean)
